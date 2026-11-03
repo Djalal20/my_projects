@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Projects</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0d1f1c;--ink2:#17332e;--paper:#f3f6f2;--card:#fff;--teal:#1f9d77;--teal2:#157a5c;--gold:#e3a93b;--line:#d9e2dc;--mut:#5c6e68;--red:#c0392b}
+*{box-sizing:border-box}
+body{margin:0;font-family:Cairo,system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.7}
+button,input,textarea,select{font:inherit}
+header{position:sticky;top:0;z-index:20;background:var(--ink);color:#fff}
+.bar{max-width:1100px;margin:auto;padding:12px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:1.25rem;margin-inline-end:auto;display:flex;align-items:center;gap:8px}
+.brand i{width:12px;height:12px;border-radius:50%;background:var(--teal);display:inline-block}
+.btn{border:1px solid transparent;background:var(--teal);color:#fff;padding:8px 18px;border-radius:999px;cursor:pointer;font-weight:600;transition:.15s}
+.btn:hover{background:var(--teal2)}
+.btn.ghost{background:transparent;border-color:#ffffff55}
+.btn.ghost:hover{background:#ffffff18}
+.btn.line{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.line:hover{background:var(--paper)}
+.btn.gold{background:var(--gold);color:var(--ink)}
+.btn.sm{padding:4px 12px;font-size:.85rem}
+.btn.red{background:var(--red)}
+select.lang{background:var(--ink2);color:#fff;border:1px solid #ffffff44;border-radius:999px;padding:7px 12px}
+.hero{background:var(--ink);color:#fff;padding:56px 20px 90px}
+.wrap{max-width:1100px;margin:auto}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.2;margin:0 0 14px;font-weight:800}
+.hero p{color:#b8cdc6;max-width:46ch;margin:0}
+.stats{display:flex;gap:28px;margin-top:28px}
+.stats b{display:block;font-size:2rem;color:var(--gold);line-height:1.1}
+.stats span{color:#9fb7af;font-size:.9rem}
+.ticket{background:var(--card);color:var(--ink);border-radius:18px;padding:22px;box-shadow:0 20px 50px #0006}
+.tag{display:inline-block;background:#e3f5ee;color:var(--teal2);border-radius:6px;padding:2px 10px;font-weight:600;font-size:.85rem}
+.addr{direction:ltr;text-align:left;font-family:ui-monospace,monospace;font-size:.88rem;word-break:break-all;background:var(--paper);border:1px dashed var(--teal);border-radius:10px;padding:12px;margin:12px 0}
+.warn{font-size:.85rem;color:var(--mut)}
+main{max-width:1100px;margin:-50px auto 40px;padding:0 20px}
+section.box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;margin-bottom:24px}
+h2{margin:0 0 16px;font-size:1.4rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.proj{border:1px solid var(--line);border-radius:14px;padding:18px;border-inline-start:5px solid var(--teal);display:flex;flex-direction:column;gap:8px}
+.proj h3{margin:0}.proj p{margin:0;color:var(--mut);flex:1}
+.row{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border:0}
+label{display:block;font-weight:600;margin:10px 0 4px;font-size:.92rem}
+input,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff}
+input:focus,textarea:focus,select:focus,.btn:focus-visible{outline:2px solid var(--teal);outline-offset:1px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+dialog{border:0;border-radius:18px;padding:26px;width:min(420px,92vw);box-shadow:0 30px 80px #0008}
+dialog::backdrop{background:#0d1f1ccc}
+.err{color:var(--red);font-size:.9rem;min-height:1.3em}
+.ok{color:var(--teal2);font-size:.9rem}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th,td{padding:8px;text-align:start;border-bottom:1px solid var(--line);vertical-align:top}
+.tw{overflow-x:auto}
+.st{padding:2px 10px;border-radius:999px;font-size:.8rem;font-weight:600}
+.st.pending{background:#fdf1d4;color:#8a6414}.st.confirmed{background:#dff3ea;color:var(--teal2)}.st.rejected{background:#f8dcd8;color:var(--red)}
+.hide{display:none!important}
+footer{text-align:center;color:var(--mut);padding:20px 20px 40px;font-size:.9rem}
+.acts{display:flex;gap:6px;flex-wrap:wrap}
+.pc{padding:0 0 16px;overflow:hidden;gap:10px}.pc>*{margin-inline:16px}.pc>img{margin:0;width:100%;border-radius:0;aspect-ratio:16/10;object-fit:cover;background:var(--paper)}.pc h3{margin-top:4px}.pb{height:8px;background:var(--line);border-radius:99px;overflow:hidden}.pb i{display:block;height:100%;background:var(--teal)}.gl{display:flex;justify-content:space-between;font-size:.88rem;margin-bottom:4px}
+@media(max-width:800px){.hero .wrap{grid-template-columns:1fr}.two{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="bar">
+  <div class="brand"><i></i><span data-i="brand"></span></div>
+  <span id="hello" class="hide" style="color:#b8cdc6"></span>
+  <button class="btn ghost" id="bSignup" data-i="signup"></button>
+  <button class="btn" id="bSignin" data-i="signin"></button>
+  <button class="btn gold" id="bAdmin" data-i="admin"></button>
+  <button class="btn ghost hide" id="bOut" data-i="logout"></button>
+  <select class="lang" id="lang" aria-label="Language"><option value="ar">العربية</option><option value="en">English</option><option value="fr">Français</option></select>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <div>
+    <h1 data-i="heroT"></h1>
+    <p data-i="heroP"></p>
+    <div class="stats"><div><b id="sTotal">0</b><span data-i="raised"></span></div><div><b id="sCount">0</b><span data-i="supporters"></span></div></div>
+  </div>
+  <div class="ticket">
+    <span class="tag">USDT · TRC20</span>
+    <h2 style="margin:10px 0 0;font-size:1.2rem" data-i="walletT"></h2>
+    <div class="addr" id="addr">—</div>
+    <button class="btn" id="bCopy" data-i="copy"></button>
+    <p class="warn" data-i="walletW"></p>
+  </div>
+</div></div>
+
+<main>
+  <section class="box" id="adminPanel" class="hide" hidden>
+    <h2 data-i="admT"></h2><div class="grid" id="admStats" style="margin-bottom:18px"></div>
+    <div class="grid" style="margin-bottom:18px">
+      <div><label data-i="walletEdit"></label><input id="wIn" dir="ltr"><button class="btn sm" id="wSave" style="margin-top:8px" data-i="save"></button></div>
+      <div><label data-i="newPass"></label><input id="pIn" type="password" minlength="6" autocomplete="new-password"><button class="btn sm" id="pSave" style="margin-top:8px" data-i="save"></button></div>
+      <div><label data-i="addProj"></label><input id="ptIn" data-ph="pTitle"><input id="pdIn" data-ph="pDesc" style="margin-top:6px"><input id="puIn" data-ph="pUrl" dir="ltr" style="margin-top:6px"><input id="pgIn" type="number" min="0" step="any" data-ph="pGoal" style="margin-top:6px"><input id="piIn" type="file" accept="image/*" style="margin-top:6px"><button class="btn sm" id="pAdd" style="margin-top:8px" data-i="add"></button></div>
+    </div>
+    <div class="ok" id="admMsg"></div>
+    <h2 data-i="allSup"></h2>
+    <div class="tw"><table><thead><tr><th data-i="name"></th><th data-i="contact"></th><th data-i="amount"></th><th>TXID</th><th data-i="status"></th><th></th></tr></thead><tbody id="admRows"></tbody></table></div>
+  </section>
+
+  <section class="box">
+    <h2 data-i="reportT"></h2>
+    <div id="needLogin" data-i="needLogin"></div>
+    <form id="fRep" class="hide">
+      <div class="two"><div><label data-i="amount"></label><input id="rAmt" type="number" min="1" step="any" required></div><div><label>TXID</label><input id="rTx" dir="ltr" required></div></div>
+      <label data-i="project"></label><select id="rProj" style="width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff"></select><label data-i="note"></label><textarea id="rNote" rows="2"></textarea>
+      <div class="err" id="rErr"></div>
+      <button class="btn" data-i="send"></button>
+    </form>
+    <div id="myRows" style="margin-top:14px"></div>
+  </section>
+
+  <section class="box">
+    <h2 data-i="supT"></h2>
+    <div id="pubRows"></div>
+  </section>
+
+  <section class="box">
+    <h2 data-i="projT"></h2>
+    <div class="grid" id="projects"></div>
+  </section>
+</main>
+<footer data-i="foot"></footer>
+
+<dialog id="dlg"><form id="fAuth">
+  <h2 id="dT" style="margin-bottom:6px"></h2>
+  <div id="fName" class="hide"><label data-i="name"></label><input id="aName"><label data-i="phone"></label><input id="aPhone" dir="ltr"></div>
+  <label data-i="email"></label><input id="aMail" type="email" required dir="ltr" autocomplete="email">
+  <label data-i="password"></label><input id="aPass" type="password" required minlength="6" autocomplete="current-password">
+  <div class="err" id="aErr"></div>
+  <div class="acts"><button class="btn" id="aGo"></button><button type="button" class="btn line" id="aX" data-i="cancel"></button></div>
+</form></dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+const SUPABASE_URL='PASTE_YOUR_SUPABASE_URL', SUPABASE_KEY='PASTE_YOUR_ANON_KEY';
+const DEMO=SUPABASE_URL.startsWith('PASTE');
+function fake(){
+  const mem={},ADM='dzdjalal086@gmail.com';
+  const L=(k,d)=>{try{return JSON.parse(localStorage.getItem('demo_'+k))??d}catch(_){return d}};
+  const get=k=>{if(!mem[k]){mem[k]=L(k,[]);if(k==='users'&&!mem[k].find(u=>u.email==='admin@demo.com'))mem[k].unshift({id:'a',email:'admin@demo.com',password:'Demo@12345',name:'Admin',phone:''})}return mem[k]};
+  const save=k=>{try{localStorage.setItem('demo_'+k,JSON.stringify(mem[k]))}catch(_){}};
+  let cur=L('cur',null);
+  const setCur=u=>{cur=u;try{localStorage.setItem('demo_cur',JSON.stringify(u))}catch(_){}};
+  return{
+   auth:{
+    async signUp({email,password,options}){email=email.trim().toLowerCase();const us=get('users');if(us.find(u=>u.email===email))return{error:{message:'Email already registered'}};
+      const u={id:'u'+Date.now(),email,password,...(options?.data||{})};us.push(u);save('users');setCur(u);return{data:{session:true},error:null}},
+    async signInWithPassword({email,password}){email=email.trim().toLowerCase();const u=get('users').find(x=>x.email===email&&x.password===password);if(!u)return{error:{message:'Invalid email or password'}};setCur(u);return{error:null}},
+    async signOut(){setCur(null)},
+    async getSession(){return{data:{session:cur?{user:{id:cur.id,email:cur.email,user_metadata:{name:cur.name,phone:cur.phone}}}:null}}},
+    async updateUser({password}){const u=get('users').find(x=>x.id===cur.id);u.password=password;save('users');return{error:null}}},
+   async rpc(){return{data:!!cur&&(cur.email===ADM||cur.email==='admin@demo.com')}},
+   from(tb){const rows=get(tb);const f=[];let op='sel',pl=null,ord=null;
+    const run=async one=>{let m=rows.filter(r=>f.every(x=>x(r)));
+      if(op==='ins'){rows.push({id:Date.now()+Math.random(),created_at:new Date().toISOString(),status:'pending',...pl});save(tb);return{error:null}}
+      if(op==='upd'){m.forEach(r=>Object.assign(r,pl));save(tb);return{error:null}}
+      if(op==='ups'){const r=rows.find(x=>x.key===pl.key);r?Object.assign(r,pl):rows.push(pl);save(tb);return{error:null}}
+      if(op==='del'){mem[tb]=rows.filter(r=>!m.includes(r));save(tb);return{error:null}}
+      let out=m.map(r=>tb==='supports'?{...r,profiles:get('users').find(u=>u.id===r.user_id)}:r);
+      if(ord)out.sort((a,b)=>String(a[ord[0]]).localeCompare(String(b[ord[0]]))*ord[1]);
+      return{data:one?out[0]||null:out,error:null}};
+    const q={select:()=>q,eq:(c,v)=>{f.push(r=>r[c]==v);return q},order:(c,o)=>{ord=[c,o&&o.ascending===true?1:-1];return q},
+      insert:v=>{op='ins';pl=v;return q},update:v=>{op='upd';pl=v;return q},upsert:v=>{op='ups';pl=v;return q},delete:()=>{op='del';return q},
+      maybeSingle:()=>run(true),then:(a,b)=>run().then(a,b)};
+    return q}};
+}
+const sb=DEMO?fake():supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+
+const D={
+ar:{brand:'مشاريعي',signup:'تسجيل',signin:'دخول',admin:'الإدارة',logout:'خروج',hello:'مرحباً',
+heroT:'ادعم مشاريعي وكن جزءاً منها',heroP:'كل مساهمة تساعدني على تطوير أفكاري وتحويلها إلى مشاريع حقيقية. الدفع بعملة USDT عبر شبكة TRC20.',
+raised:'إجمالي الدعم (USDT)',supporters:'داعمون',walletT:'عنوان المحفظة',copy:'نسخ العنوان',copied:'تم النسخ ✓',
+walletW:'أرسل USDT عبر شبكة TRC20 فقط. أي شبكة أخرى قد تؤدي إلى ضياع المبلغ.',
+reportT:'سجّل دعمك',needLogin:'أنشئ حساباً أو سجّل الدخول لتسجيل دعمك والتواصل معك.',amount:'المبلغ (USDT)',note:'ملاحظة (اختياري)',send:'إرسال',
+sent:'تم الإرسال، سيتم تأكيده قريباً.',supT:'الداعمون',none:'لا شيء بعد.',projT:'مشاريعي',noProj:'ستظهر المشاريع هنا قريباً.',visit:'زيارة المشروع',
+name:'الاسم',email:'البريد الإلكتروني',phone:'واتساب / هاتف',password:'كلمة السر',cancel:'إلغاء',
+tSignup:'إنشاء حساب',tSignin:'تسجيل الدخول',tAdmin:'دخول الإدارة',badAdmin:'هذا الحساب ليس حساب إدارة.',
+admT:'لوحة الإدارة',walletEdit:'عنوان محفظة USDT TRC20',newPass:'كلمة سر جديدة',save:'حفظ',saved:'تم الحفظ ✓',
+addProj:'إضافة مشروع',pTitle:'العنوان',pDesc:'الوصف',pUrl:'الرابط (اختياري)',add:'إضافة',del:'حذف',
+allSup:'كل الداعمين',contact:'التواصل',status:'الحالة',ok:'تأكيد',no:'رفض',pending:'قيد المراجعة',confirmed:'مؤكد',rejected:'مرفوض',
+total:'المجموع',dash:'لوحة التحكم',site:'الموقع',support:'ادعم هذا المشروع',need:'المبلغ المطلوب',raisedK:'تم جمعه',pGoal:'المبلغ المطلوب (USDT)',project:'المشروع',general:'دعم عام',err:'حدث خطأ، حاول مرة أخرى.',check:'تحقق من بريدك لتأكيد الحساب ثم سجّل الدخول.',foot:'© مشاريعي. جميع الحقوق محفوظة.'},
+en:{brand:'My Projects',signup:'Sign up',signin:'Sign in',admin:'Admin',logout:'Sign out',hello:'Hello',
+heroT:'Support my projects and be part of them',heroP:'Every contribution helps me develop my ideas into real projects. Payments are made in USDT on the TRC20 network.',
+raised:'Total support (USDT)',supporters:'Supporters',walletT:'Wallet address',copy:'Copy address',copied:'Copied ✓',
+walletW:'Send USDT on the TRC20 network only. Any other network may result in lost funds.',
+reportT:'Report your support',needLogin:'Create an account or sign in to report your support so I can reach you.',amount:'Amount (USDT)',note:'Note (optional)',send:'Send',
+sent:'Sent. It will be confirmed soon.',supT:'Supporters',none:'Nothing yet.',projT:'My projects',noProj:'Projects will appear here soon.',visit:'Visit project',
+name:'Name',email:'Email',phone:'WhatsApp / phone',password:'Password',cancel:'Cancel',
+tSignup:'Create account',tSignin:'Sign in',tAdmin:'Admin sign in',badAdmin:'This account is not an admin account.',
+admT:'Admin panel',walletEdit:'USDT TRC20 wallet address',newPass:'New password',save:'Save',saved:'Saved ✓',
+addProj:'Add a project',pTitle:'Title',pDesc:'Description',pUrl:'Link (optional)',add:'Add',del:'Delete',
+allSup:'All supporters',contact:'Contact',status:'Status',ok:'Confirm',no:'Reject',pending:'Pending',confirmed:'Confirmed',rejected:'Rejected',
+total:'Total',dash:'Dashboard',site:'Site',support:'Support this project',need:'Needed',raisedK:'Raised',pGoal:'Goal amount (USDT)',project:'Project',general:'General support',err:'Something went wrong. Please try again.',check:'Check your email to confirm your account, then sign in.',foot:'© My Projects. All rights reserved.'},
+fr:{brand:'Mes Projets',signup:'Inscription',signin:'Connexion',admin:'Admin',logout:'Déconnexion',hello:'Bonjour',
+heroT:'Soutenez mes projets et faites-en partie',heroP:'Chaque contribution m’aide à transformer mes idées en vrais projets. Paiement en USDT sur le réseau TRC20.',
+raised:'Total des soutiens (USDT)',supporters:'Soutiens',walletT:'Adresse du portefeuille',copy:'Copier l’adresse',copied:'Copié ✓',
+walletW:'Envoyez des USDT uniquement via le réseau TRC20. Tout autre réseau peut entraîner une perte des fonds.',
+reportT:'Déclarez votre soutien',needLogin:'Créez un compte ou connectez-vous pour déclarer votre soutien et que je puisse vous contacter.',amount:'Montant (USDT)',note:'Note (facultatif)',send:'Envoyer',
+sent:'Envoyé. Il sera confirmé prochainement.',supT:'Soutiens',none:'Rien pour l’instant.',projT:'Mes projets',noProj:'Les projets apparaîtront bientôt ici.',visit:'Voir le projet',
+name:'Nom',email:'E-mail',phone:'WhatsApp / téléphone',password:'Mot de passe',cancel:'Annuler',
+tSignup:'Créer un compte',tSignin:'Connexion',tAdmin:'Connexion admin',badAdmin:'Ce compte n’est pas un compte admin.',
+admT:'Espace admin',walletEdit:'Adresse du portefeuille USDT TRC20',newPass:'Nouveau mot de passe',save:'Enregistrer',saved:'Enregistré ✓',
+addProj:'Ajouter un projet',pTitle:'Titre',pDesc:'Description',pUrl:'Lien (facultatif)',add:'Ajouter',del:'Supprimer',
+allSup:'Tous les soutiens',contact:'Contact',status:'Statut',ok:'Confirmer',no:'Refuser',pending:'En attente',confirmed:'Confirmé',rejected:'Refusé',
+total:'Total',dash:'Tableau de bord',site:'Site',support:'Soutenir ce projet',need:'Objectif',raisedK:'Collecté',pGoal:'Montant objectif (USDT)',project:'Projet',general:'Soutien général',err:'Une erreur est survenue. Réessayez.',check:'Vérifiez votre e-mail pour confirmer votre compte, puis connectez-vous.',foot:'© Mes Projets. Tous droits réservés.'}
+};
+const $=id=>document.getElementById(id);
+let lang=localStorage.getItem('lang')||'ar', user=null, isAdmin=false, mode='signin', wallet='';
+const t=k=>D[lang][k]||k;
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=n=>Number(n||0).toLocaleString(lang,{maximumFractionDigits:2});
+const dt=d=>new Date(d).toLocaleDateString(lang);
+const safeUrl=u=>/^https?:\/\//i.test(u||'')?u:'';
+
+function applyLang(){
+  document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  document.querySelectorAll('[data-i]').forEach(e=>e.textContent=t(e.dataset.i));
+  document.querySelectorAll('[data-ph]').forEach(e=>e.placeholder=t(e.dataset.ph));
+  $('lang').value=lang;
+  $('addr').textContent=wallet||'—';
+  $('hello').textContent=user?t('hello')+' '+(user.user_metadata?.name||user.email):'';
+  setView();if($('dlg').open)setMode(mode);
+  renderAll();
+}
+function setMode(m){
+  mode=m;$('dT').textContent=t({signup:'tSignup',signin:'tSignin',admin:'tAdmin'}[m]);
+  $('aGo').textContent=t(m==='signup'?'signup':'signin');
+  $('fName').classList.toggle('hide',m!=='signup');
+  $('aPass').autocomplete=m==='signup'?'new-password':'current-password';
+}
+function openAuth(m){setMode(m);$('aErr').textContent='';$('dlg').showModal()}
+$('bSignup').onclick=()=>openAuth('signup');
+$('bSignin').onclick=()=>openAuth('signin');
+$('bAdmin').onclick=()=>{ if(isAdmin){view=view==='admin'?'site':'admin';setView();window.scrollTo(0,0)} else openAuth('admin') };
+$('aX').onclick=()=>$('dlg').close();
+$('lang').onchange=e=>{lang=e.target.value;localStorage.setItem('lang',lang);applyLang()};
+
+$('fAuth').onsubmit=async e=>{
+  e.preventDefault();$('aErr').textContent='';
+  const email=$('aMail').value.trim(),password=$('aPass').value;
+  try{
+    if(mode==='signup'){
+      const {data,error}=await sb.auth.signUp({email,password,options:{data:{name:$('aName').value.trim(),phone:$('aPhone').value.trim()}}});
+      if(error)throw error;
+      if(!data.session){$('aErr').style.color='var(--teal2)';$('aErr').textContent=t('check');return}
+    }else{
+      const {error}=await sb.auth.signInWithPassword({email,password});
+      if(error)throw error;
+      if(mode==='admin'){
+        const {data:a}=await sb.rpc('is_admin');
+        if(!a){await sb.auth.signOut();$('aErr').style.color='';$('aErr').textContent=t('badAdmin');return}
+      }
+    }
+    $('dlg').close();$('fAuth').reset();$('aErr').style.color='';
+    await session(mode==='admin');
+  }catch(x){$('aErr').style.color='';$('aErr').textContent=x.message||t('err')}
+};
+$('bOut').onclick=async()=>{await sb.auth.signOut();await session()};
+
+async function session(scroll){
+  const {data}=await sb.auth.getSession();
+  user=data.session?.user||null;isAdmin=false;
+  if(user){const {data:a}=await sb.rpc('is_admin');isAdmin=!!a}
+  ['bSignup','bSignin'].forEach(i=>$(i).classList.toggle('hide',!!user));
+  $('bOut').classList.toggle('hide',!user);$('hello').classList.toggle('hide',!user);
+  $('bAdmin').classList.toggle('hide',!!user&&!isAdmin);
+  if(!isAdmin)view='site';
+  $('needLogin').classList.toggle('hide',!!user);$('fRep').classList.toggle('hide',!user);
+  await loadAll();applyLang();
+  if(scroll&&isAdmin){view='admin';setView();window.scrollTo(0,0)}
+}
+
+let pub=[],mine=[],all=[],projs=[],view='site';
+function goalHtml(p){const r=pub.filter(x=>x.project_id==p.id).reduce((a,x)=>a+Number(x.amount),0),g=Number(p.goal)||0;return `<div><div class="gl"><span>${t('raisedK')}: <b>${fmt(r)}</b></span><span>${t('need')}: <b>${g?fmt(g)+' USDT':'—'}</b></span></div>${g?`<div class="pb"><i style="width:${Math.min(100,r/g*100)}%"></i></div>`:''}</div>`}
+function toImg(file){return new Promise(res=>{if(!file)return res('');const r=new FileReader();r.onload=()=>{const i=new Image();i.onload=()=>{const k=Math.min(1,800/i.width),c=document.createElement('canvas');c.width=i.width*k;c.height=i.height*k;c.getContext('2d').drawImage(i,0,0,c.width,c.height);res(c.toDataURL('image/jpeg',.8))};i.onerror=()=>res('');i.src=r.result};r.readAsDataURL(file)})}
+function setView(){const a=isAdmin&&view==='admin';$('adminPanel').hidden=!a;document.querySelector('.hero').hidden=a;document.querySelectorAll('main>section.box:not(#adminPanel)').forEach(s=>s.hidden=a);document.querySelector('main').style.marginTop=a?'28px':'';$('bAdmin').textContent=isAdmin?t(a?'site':'dash'):t('admin')}
+async function loadAll(){
+  const s=await sb.from('settings').select('value').eq('key','wallet').maybeSingle();
+  wallet=s.data?.value||'';
+  const p=await sb.from('supports').select('name,amount,created_at,project_id').eq('status','confirmed').order('created_at',{ascending:false});
+  pub=p.data||[];
+  const pr=await sb.from('projects').select('*').order('created_at',{ascending:false});projs=pr.data||[];
+  mine=[];all=[];
+  if(user){const m=await sb.from('supports').select('*').eq('user_id',user.id).order('created_at',{ascending:false});mine=m.data||[]}
+  if(isAdmin){const a=await sb.from('supports').select('*,profiles(email,phone)').order('created_at',{ascending:false});all=a.data||[];$('wIn').value=wallet}
+}
+function stBadge(s){return `<span class="st ${s}">${esc(t(s))}</span>`}
+function renderAll(){
+  if(isAdmin){const c=all.filter(r=>r.status==='confirmed'),p=all.filter(r=>r.status==='pending');$('admStats').innerHTML=[[fmt(c.reduce((a,r)=>a+Number(r.amount),0))+' USDT',t('raised')],[c.length,t('confirmed')],[p.length,t('pending')],[new Set(all.map(r=>r.user_id)).size,t('supporters')]].map(([v,l])=>`<div class="proj"><h3 style="color:var(--teal2);font-size:1.6rem">${v}</h3><p>${l}</p></div>`).join('')}
+  $('sTotal').textContent=fmt(pub.reduce((a,r)=>a+Number(r.amount),0));
+  $('sCount').textContent=pub.length;
+  {const v=$('rProj').value;$('rProj').innerHTML=`<option value="">${t('general')}</option>`+projs.map(p=>`<option value="${esc(p.id)}">${esc(p.title)}</option>`).join('');$('rProj').value=v}
+  $('pubRows').innerHTML=pub.length?pub.map(r=>`<div class="row"><span>${esc(r.name)} <small style="color:var(--mut)">${dt(r.created_at)}</small></span><b>${fmt(r.amount)} USDT</b></div>`).join(''):`<span style="color:var(--mut)">${t('none')}</span>`;
+  $('myRows').innerHTML=mine.map(r=>`<div class="row"><span>${fmt(r.amount)} USDT · ${dt(r.created_at)}</span>${stBadge(r.status)}</div>`).join('');
+  $('projects').innerHTML=projs.length?projs.map(p=>`<div class="proj pc">${p.image?`<img src="${esc(p.image)}" alt="${esc(p.title)}">`:''}<h3>${esc(p.title)}</h3><p>${esc(p.descr)}</p>${goalHtml(p)}${safeUrl(p.url)?`<a class="btn sm" style="text-decoration:none;text-align:center" href="${esc(p.url)}" target="_blank" rel="noopener">${t('visit')}</a>`:''}<button class="btn" data-sup="${p.id}">${t('support')}</button>${isAdmin?`<button class="btn sm red" data-dp="${p.id}">${t('del')}</button>`:''}</div>`).join(''):`<span style="color:var(--mut)">${t('noProj')}</span>`;
+  if(isAdmin)$('admRows').innerHTML=all.map(r=>{
+    const c=r.profiles||{},ph=(c.phone||'').replace(/[^\d]/g,'');
+    return `<tr><td>${esc(r.name)}<br><small>${dt(r.created_at)}</small></td><td>${c.email?`<a href="mailto:${esc(c.email)}">${esc(c.email)}</a><br>`:''}${ph?`<a href="https://wa.me/${ph}" target="_blank" rel="noopener">WhatsApp</a>`:''}</td><td><b>${fmt(r.amount)}</b></td><td dir="ltr"><a href="https://tronscan.org/#/transaction/${encodeURIComponent(r.txid)}" target="_blank" rel="noopener">${esc((r.txid||'').slice(0,12))}…</a></td><td>${stBadge(r.status)}</td><td><div class="acts"><button class="btn sm" data-st="confirmed" data-id="${r.id}">${t('ok')}</button><button class="btn sm line" data-st="rejected" data-id="${r.id}">${t('no')}</button></div></td></tr>`}).join('')
+    +`<tr><td colspan="2"><b>${t('total')}</b></td><td colspan="4"><b>${fmt(all.filter(r=>r.status==='confirmed').reduce((a,r)=>a+Number(r.amount),0))} USDT</b></td></tr>`;
+}
+document.addEventListener('click',async e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.st){await sb.from('supports').update({status:b.dataset.st}).eq('id',b.dataset.id);await loadAll();renderAll()}
+  if(b.dataset.sup){if(!user){openAuth('signup');return}$('rProj').value=b.dataset.sup;$('fRep').scrollIntoView({behavior:'smooth',block:'center'})}
+  if(b.dataset.dp){await sb.from('projects').delete().eq('id',b.dataset.dp);await loadAll();renderAll()}
+});
+function msg(ok){$('admMsg').textContent=ok?t('saved'):t('err');$('admMsg').style.color=ok?'':'var(--red)'}
+$('wSave').onclick=async()=>{const {error}=await sb.from('settings').upsert({key:'wallet',value:$('wIn').value.trim()});msg(!error);await loadAll();applyLang()};
+$('pSave').onclick=async()=>{const v=$('pIn').value;if(v.length<6)return msg(false);const {error}=await sb.auth.updateUser({password:v});msg(!error);if(!error)$('pIn').value=''};
+$('pAdd').onclick=async()=>{const ti=$('ptIn').value.trim();if(!ti)return;const image=await toImg($('piIn').files[0]);const {error}=await sb.from('projects').insert({title:ti,descr:$('pdIn').value.trim(),url:$('puIn').value.trim(),goal:$('pgIn').value||null,image});msg(!error);if(!error){['ptIn','pdIn','puIn','pgIn','piIn'].forEach(i=>$(i).value='');await loadAll();renderAll()}};
+$('bCopy').onclick=async()=>{if(!wallet)return;try{await navigator.clipboard.writeText(wallet)}catch(_){}$('bCopy').textContent=t('copied');setTimeout(()=>$('bCopy').textContent=t('copy'),1500)};
+$('fRep').onsubmit=async e=>{
+  e.preventDefault();$('rErr').textContent='';
+  const {error}=await sb.from('supports').insert({user_id:user.id,name:user.user_metadata?.name||user.email.split('@')[0],amount:$('rAmt').value,txid:$('rTx').value.trim(),note:$('rNote').value.trim(),project_id:$('rProj').value||null});
+  if(error){$('rErr').textContent=t('err');return}
+  $('fRep').reset();$('rErr').style.color='var(--teal2)';$('rErr').textContent=t('sent');
+  await loadAll();renderAll();
+};
+
+applyLang();session();
+</script>
+</body>
+</html>
